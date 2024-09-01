@@ -2,7 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Home from './components/Home';
+import Feed from './components/Feed';
+import Groups from './components/Groups';
+import Photos from './components/Photos';
+import Settings from './components/Settings';
 import Login from './components/Login';
 import './App.css';
 
@@ -16,29 +19,33 @@ function App() {
           {/* Route for Login */}
           <Route path="/login" element={<Login onSignIn={() => setIsAuthenticated(true)} />} />
 
-          {/* Route for Main App */}
-          <Route
-            path="/home"
-            element={
-              isAuthenticated ? (
-                <React.Fragment>
+          {/* Routes for Authenticated Users */}
+          {isAuthenticated && (
+            <Route
+              path="*"
+              element={
+                <>
                   <Header />
                   <div className="app__body">
                     <Sidebar />
-                    <Home />
+                    <Routes>
+                      <Route path="/home" element={<Feed />} />
+                      <Route path="/groups" element={<Groups />} />
+                      <Route path="/photos" element={<Photos />} />
+                      <Route path="/settings" element={<Settings />} />
+                      <Route path="/" element={<Navigate to="/home" />} />
+                      <Route path="*" element={<h1>404 - Not Found</h1>} />
+                    </Routes>
                   </div>
-                </React.Fragment>
-              ) : (
-                <Navigate to="/login" />
-              )
-            }
-          />
+                </>
+              }
+            />
+          )}
 
           {/* Default Route to Redirect to Login */}
-          <Route path="/" element={<Navigate to="/login" />} />
-
-          {/* Catch-All Route for 404 */}
-          <Route path="*" element={<h1>404 - Not Found</h1>} />
+          {!isAuthenticated && (
+            <Route path="*" element={<Navigate to="/login" />} />
+          )}
         </Routes>
       </div>
     </Router>

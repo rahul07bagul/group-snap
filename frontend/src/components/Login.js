@@ -30,7 +30,8 @@ function Login({ onSignIn }) {
               <input type="password" placeholder="Password" />
             </div>
             <a href="#" className="forgot-password">Forgot password?</a>
-            <Button type="submit" className="btn" variant="contained">Login</Button>
+            {/* <Button type="submit" className="btn" variant="contained">Login</Button> */}
+            <input type="submit" value="Login" class="btn"/>
             <p>Don't have an account? <a href="#" className="account-text" id="sign-up-link">Sign up</a></p>
           </form>
           <form action="" className="sign-up-form">
