@@ -1,0 +1,36 @@
+.sidebarRow {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.sidebarRow:hover {
+	background-color: rgb(72, 71, 71);
+	border-radius: 10px;
+}
+
+.sidebarRow > h4 {
+	margin-left: 20px;
+	font-weight: 600;
+}
+
+.sidebarRow > .MuiSvgIcon-root {
+	font-size: xx-large;
+}
+
+* {
+	margin: 0;
+}
+
+* {
+	font-family: 'Roboto', sans-serif;
+}
+
+.poppins_font {
+	padding-left: 20px;
+	color: #b0b0b0;
+	font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+}

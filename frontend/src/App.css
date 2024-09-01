@@ -1,0 +1,17 @@
+.app {
+	background-color: #121212; /* Dark background color */
+	color: #272727; /* Light text color to contrast with the dark background */
+	min-height: 100vh; /* Ensure the background covers the full height */
+}
+  
+.app__body {
+	display: flex;
+	background-color: #272727;
+	overflow-y: hidden;
+	height: 92vh;
+ }
+ 
+* {
+	font-family: 'Roboto', sans-serif;
+	box-sizing: border-box;
+}

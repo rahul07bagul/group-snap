@@ -1,0 +1,55 @@
+.sidebar {
+	position: sticky;
+	top: 0;
+	flex: 0.2;
+	padding: 30px 10px;
+	background-color: #1f1f1f;
+	height: 100vh;
+	overflow-y: auto;
+	box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.4), -5px 4px 10px 0 rgba(0, 0, 0, 0.4), 0 -2px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+* {
+	font-family: 'Roboto', sans-serif;
+	text-decoration: none;
+}
+
+.name {
+	font-size: 16px;
+	text-decoration: none;
+}
+
+/* h4 {
+	color: #b0b0b0;
+	font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+} */
+
+.sidebar__user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sidebar__userImage {
+    width: 200px; /* Make the image larger */
+    height: 200px; /* Keep the image square */
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image covers the area */
+    margin-bottom: 10px; /* Space between the image and the name */
+}
+
+.sidebar__userName {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #c8c7c7;
+}
+
+.poppins-light {
+	font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+  }
