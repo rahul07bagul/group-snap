@@ -1,32 +1,49 @@
-import React from 'react';
-import './Groups.css';
+import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import './Groups.css';
 import GroupRow from './GroupRow';
-
-
-// For v4:
-const useStyles = makeStyles({
-  root: {
-    '& .MuiButton-label': {
-      fontFamily: 'Poppins, sans-serif',
-    },
-  },
-});
+import CreateGroupDialog from './CreateGroupDialog';
+import JoinGroupDialog from './JoinGroupDialog';
 
 function Groups() {
-    const classes = useStyles();
+  const [openCreateDialog, setOpenCreateDialog] = useState(false);
+  const [openJoinDialog, setOpenJoinDialog] = useState(false);
+
+  const handleOpenCreateDialog = () => {
+      setOpenCreateDialog(true);
+  };
+
+  const handleCloseCreateDialog = () => {
+      setOpenCreateDialog(false);
+  };
+
+  const handleOpenJoinDialog = () => {
+      setOpenJoinDialog(true);
+  };
+
+  const handleCloseJoinDialog = () => {
+      setOpenJoinDialog(false);
+  };
     return (
         <div className="group">
             <div className='create_group'>
-                <Button className={classes.root}>Create Group</Button>
-                <Button className={classes.root}>Join Group</Button>
+                <Button onClick={handleOpenCreateDialog}>
+                    Create Group
+                </Button>
+                <Button onClick={handleOpenJoinDialog}>Join Group</Button>
             </div>
 
             <div className='groups'>
-                <GroupRow/>
-                <GroupRow/>
+              <GroupRow/>
+              <GroupRow/>
             </div>
+
+            {/* Create Group Dialog */}
+            <CreateGroupDialog open={openCreateDialog} onClose={handleCloseCreateDialog} />
+        
+            {/* Join Group Dialog */}
+            <JoinGroupDialog open={openJoinDialog} onClose={handleCloseJoinDialog} />
+
         </div>
     );
 }

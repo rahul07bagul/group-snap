@@ -1,0 +1,61 @@
+/* Custom styling for the modal dialog */
+.dialogPaper {
+    padding: 32px;
+    background-color: #3b3939 !important; /* Force the background color */
+    border-radius: 30px !important;
+}
+
+.dialogTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #c1c0c0;
+}
+
+.dialogButtons{
+    color: #c1c0c0 !important;
+}
+
+.dialogActions Button:hover {
+    color: #c1c0c0;
+    background-color: rgb(111, 111, 111);
+    border: none;
+}
+
+.contentText{
+    color: #c1c0c0;
+}
+
+.dialogContent {
+    font-size: 1rem;
+    color: #c1c0c0;
+}
+
+.textField {
+    margin-top: 16px;
+    color: #c1c0c0 !important;
+}
+
+.textField .Mui-focused {
+    color: #c1c0c0 !important;
+}
+
+.textField .MuiFormLabel-root{
+    color: #c1c0c0;
+}
+
+.textField .MuiOutlinedInput-root {
+    fieldset {
+        border-color: #ccc !important;
+    }
+    &:hover fieldset {
+        border-color: #ffffff !important;
+    }
+    &.Mui-focused fieldset {
+        border-color: #ffffff !important;
+    }
+}
+
+.dialogActions {
+    justify-content: center;
+    color: #c1c0c0 !important;
+}
