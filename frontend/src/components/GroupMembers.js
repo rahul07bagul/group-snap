@@ -9,7 +9,7 @@ function GroupMembers({ profilePic, username }) {
                 <Avatar src={profilePic} className="member__avatar" />
 
                 <div className="member__topInfo">
-                    <h4 className="member_font">Rahul</h4>
+                    <h4 className="member_font">{username}</h4>
                 </div>
             </div>
         </div>

@@ -4,10 +4,13 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import './GroupDetails.css';
-import groupImg from '../images/best-freinds.jpg';
 import Feed from './Feed';
 import GroupMembers from './GroupMembers';
 import Photos from './Photos';
+import groupImg from '../images/groupImg.jpg';
+import shreyas from '../images/shreyas.JPG';
+import deep from '../images/deep.JPG';
+import sup from '../images/sup.JPG';
 
 function GroupDetails() {
     const { groupName } = useParams();
@@ -30,13 +33,18 @@ function GroupDetails() {
         },
         {
             id: 2,
-            username: 'John',
-            profilePic: 'https://example.com/john-avatar.jpg',
+            username: 'Deep',
+            profilePic: deep,
         },
         {
             id: 3,
-            username: 'Sara',
-            profilePic: 'https://example.com/sara-avatar.jpg',
+            username: 'Sup',
+            profilePic: sup,
+        },
+        {
+            id: 4,
+            username: 'Shreyas',
+            profilePic: shreyas,
         },
         // Add more members here
     ];

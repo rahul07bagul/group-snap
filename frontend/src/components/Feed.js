@@ -4,6 +4,10 @@ import Post from './Post';
 import rahulImage from '../images/Rahul Main.JPG';
 import rahulImage2 from '../images/rahulImage2.jpg'
 import WritePost from './MessageSender';
+import groupImg from '../images/groupImg.jpg';
+import shreyas from '../images/shreyas.JPG';
+import deep from '../images/deep.JPG';
+import sup from '../images/sup.JPG';
 
 function Feed() {
     // Hardcoded posts data
@@ -12,9 +16,9 @@ function Feed() {
             id: '1',
             data: {
                 profilePic: 'https://example.com/profile-pic1.jpg',
-                message: 'This is the first post!',
+                message: 'Hrishi',
                 timestamp: '2024-08-30T12:00:00Z',
-                username: 'John Doe',
+                username: 'dasdsadd',
                 image: rahulImage2,
             },
         },
@@ -22,40 +26,40 @@ function Feed() {
             id: '2',
             data: {
                 profilePic: 'https://example.com/profile-pic2.jpg',
-                message: 'Another day, another post!',
+                message: 'Euuuuuuuuu',
                 timestamp: '2024-08-29T08:30:00Z',
-                username: 'Jane Smith',
-                image: rahulImage,
+                username: 'dsadsadasd',
+                image: shreyas,
             },
         },
         {
             id: '3',
             data: {
-                profilePic: rahulImage,  // Using the rahulImage
-                message: 'Loving the new React features!',
+                profilePic: 'https://example.com/profile-pic2.jpg',  // Using the rahulImage
+                message: 'Gujju Chokhro',
                 timestamp: '2024-08-28T09:15:00Z',
-                username: 'Rahul Bagul',
-                image: rahulImage2,
+                username: 'hgfhfghfg',
+                image: deep,
             },
         },
 		{
             id: '4',
             data: {
-                profilePic: rahulImage,  // Using the rahulImage
-                message: 'Loving the new React features!',
+                profilePic: 'https://example.com/profile-pic2.jpg',  // Using the rahulImage
+                message: 'Network Engineer',
                 timestamp: '2024-08-28T09:15:00Z',
-                username: 'Rahul Bagul',
-                image: 'https://example.com/post-image3.jpg',
+                username: 'jhgjghjghj',
+                image: sup,
             },
         },
 		{
             id: '5',
             data: {
-                profilePic: rahulImage,  // Using the rahulImage
-                message: 'Loving the new React features!',
+                profilePic: 'https://example.com/profile-pic2.jpg',  // Using the rahulImage
+                message: 'Boysss',
                 timestamp: '2024-08-28T09:15:00Z',
-                username: 'Rahul Bagul',
-                image: 'https://example.com/post-image3.jpg',
+                username: 'lkjlkjljk',
+                image: groupImg,
             },
         },
     ]);

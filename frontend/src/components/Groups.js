@@ -48,8 +48,8 @@ function Groups() {
           </div>
 
           <div className='groups'>
-            <GroupRow groupName="Friends Forever" onClick={() => handleGroupClick("Friends Forever")} />
-            <GroupRow groupName="Work Buddies" onClick={() => handleGroupClick("Work Buddies")} />
+            <GroupRow groupName="Purdue Friends" onClick={() => handleGroupClick("Purdue Friends")} />
+            <GroupRow groupName="Roommates" onClick={() => handleGroupClick("Roommates")} />
           </div>
 
           {/* Create Group Dialog */}

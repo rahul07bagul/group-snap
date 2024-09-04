@@ -1,7 +1,7 @@
 import React from 'react';
 import './Post.css';
 import { Avatar } from '@material-ui/core';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 
 function Post({ profilePic, image, username, timestamp, message }) {
@@ -16,7 +16,7 @@ function Post({ profilePic, image, username, timestamp, message }) {
                 </div>
             </div>
 
-            <div className="post__bottom post_font">
+            <div className="post__message post_font">
                 <p>{message}</p>
             </div>
 
@@ -26,7 +26,7 @@ function Post({ profilePic, image, username, timestamp, message }) {
 
             <div className="post__options">
                 <div className="post__option">
-                    <ThumbUpIcon className="like2" />
+                    <ArrowUpward className="like2" />
                     <p className='post_font'>Vote</p>
                 </div>
 
