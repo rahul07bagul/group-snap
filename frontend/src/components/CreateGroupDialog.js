@@ -19,7 +19,18 @@ function CreateGroupDialog({ open, onClose }) {
   };
 
   return (
-    <Dialog open={open} onClose={onClose} classes={{ paper: "dialogPaper" }}>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      classes={{ paper: "dialogPaper" }}
+      PaperProps={{
+        style: {
+          position: 'absolute',
+          // left: '40%', // Adjust left position
+          // transform: 'translate(-30%, -20%)',
+        },
+      }}
+    >
       <DialogTitle className="dialogTitle">Create a New Group</DialogTitle>
       <DialogContent className="dialogContent">
         <DialogContentText>

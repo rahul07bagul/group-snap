@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 import './GridComponent.css';
 
 const GridComponent = ({ images }) => {
     const [selectedImage, setSelectedImage] = useState(null);
-    const [columnStyle] = useState({ flex: '25%' });
 
     const openModal = (imageSrc) => {
         setSelectedImage(imageSrc);
@@ -14,28 +15,26 @@ const GridComponent = ({ images }) => {
     };
 
     return (
-        <div>
-            {/* Photo Grid */}
-            <div className='grid'>
-                <div className="grid_header">
-                    <h1>Photos</h1>
-                </div>
-                <div className="row">
-                    {images.map((image, index) => (
-                        <div key={index} className="column" style={columnStyle}>
-                            <div className="image-container">
-                                <img
-                                    src={image.url}
-                                    alt={image.title}
-                                    className='grid_image'
-                                    onClick={() => openModal(image.url)}
-                                />
-                                <div className="overlay">{image.title}</div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+        <div className='grid'>
+            <div className="grid_header">
+                <h1>Photos</h1>
             </div>
+
+            {/* Photo Grid using Material-UI ImageList */}
+            <ImageList sx={{ width: '100%', height: 'auto', paddingLeft: '10px', paddingRight: '10px' }} cols={4} gap={0}>
+                {images.map((image, index) => (
+                    <ImageListItem key={index} onClick={() => openModal(image.url)} className="image-container">
+                        <img
+                            src={`${image.url}?w=248&fit=crop&auto=format`}
+                            srcSet={`${image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                            alt={image.title}
+                            loading="lazy"
+                            className="grid_image"
+                        />
+                        <div className="overlay">{image.title}</div>
+                    </ImageListItem>
+                ))}
+            </ImageList>
 
             {/* Modal for Image Preview */}
             {selectedImage && (

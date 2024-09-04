@@ -11,7 +11,13 @@ function JoinGroupDialog({ open, onClose }) {
     };
 
     return (
-        <Dialog open={open} onClose={onClose} classes={{ paper: 'dialogPaper' }}>
+        <Dialog open={open} onClose={onClose} classes={{ paper: 'dialogPaper' }} PaperProps={{
+            style: {
+                position: 'absolute',
+                // left: '44%', // Adjust left position
+                width: '25%',
+            },
+        }}>
             <DialogTitle className="dialogTitle">Join a Group</DialogTitle>
             <DialogContent className="dialogContent">
                 <DialogContentText>
@@ -33,10 +39,10 @@ function JoinGroupDialog({ open, onClose }) {
                 />
             </DialogContent>
             <DialogActions className="dialogActions">
-                <Button onClick={onClose}  className="dialogButtons">
+                <Button onClick={onClose} className="dialogButtons">
                     Cancel
                 </Button>
-                <Button onClick={handleJoinGroup}  className="dialogButtons">
+                <Button onClick={handleJoinGroup} className="dialogButtons">
                     Join
                 </Button>
             </DialogActions>

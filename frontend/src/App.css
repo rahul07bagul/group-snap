@@ -6,12 +6,12 @@
   
 .app__body {
 	display: flex;
-	background-color: #272727;
+	background-color: #151515;
 	overflow-y: hidden;
 	height: 92vh;
  }
  
 * {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Poppins', sans-serif !important;
 	box-sizing: border-box;
 }

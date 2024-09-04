@@ -1,0 +1,33 @@
+.member {
+	width: 40%;
+	margin-top: 15px;
+	background-color: #282727;
+	box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 1);
+	border-radius: 10px;
+}
+
+.member_font {
+    font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+	color: #eff2f5;
+}
+
+.member__top {
+	display: flex;
+	position: relative;
+	align-items: center;
+	padding: 15px;
+}
+
+.member__avatar {
+	margin-right: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.member__topInfo{
+    padding-left: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+}

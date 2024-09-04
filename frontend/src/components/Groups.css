@@ -47,13 +47,13 @@
 	margin-top: 20px;
 	cursor: pointer;
 	width: 800px;
-	background-color: #3b3939;
+	background-color: #1f1f1f;
 	border-radius: 20px;
 	box-shadow: -5px 4px 10px 0 rgba(0, 0, 0, 0.4), 0 -2px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .groupRow:hover {
-	background-color: rgb(72, 71, 71);
+	background-color: #1f1f1f;
 	border-radius: 20px;
 }
 
@@ -68,8 +68,4 @@
 
 .groupName{
 	font-size: 30px;
-}
-
-* {
-    font-family: 'Poppins', sans-serif;
 }

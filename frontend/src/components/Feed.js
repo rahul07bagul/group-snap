@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Feed.css';
 import Post from './Post';
-import rahulImage from '../images/Rahul Main.JPG';  // Importing the image
+import rahulImage from '../images/Rahul Main.JPG';
+import rahulImage2 from '../images/rahulImage2.jpg'
+import WritePost from './MessageSender';
 
 function Feed() {
     // Hardcoded posts data
@@ -13,7 +15,7 @@ function Feed() {
                 message: 'This is the first post!',
                 timestamp: '2024-08-30T12:00:00Z',
                 username: 'John Doe',
-                image: 'https://example.com/post-image1.jpg',
+                image: rahulImage2,
             },
         },
         {
@@ -23,7 +25,7 @@ function Feed() {
                 message: 'Another day, another post!',
                 timestamp: '2024-08-29T08:30:00Z',
                 username: 'Jane Smith',
-                image: 'https://example.com/post-image2.jpg',
+                image: rahulImage,
             },
         },
         {
@@ -33,7 +35,7 @@ function Feed() {
                 message: 'Loving the new React features!',
                 timestamp: '2024-08-28T09:15:00Z',
                 username: 'Rahul Bagul',
-                image: 'https://example.com/post-image3.jpg',
+                image: rahulImage2,
             },
         },
 		{
@@ -60,7 +62,7 @@ function Feed() {
 
     return (
         <div className="feed">
-
+            <WritePost/>
             {posts.map((post) => (
                 <Post
                     key={post.id}

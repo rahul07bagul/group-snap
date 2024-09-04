@@ -30,7 +30,7 @@ function App() {
                     <Sidebar />
                     <Routes>
                       <Route path="/home" element={<Feed />} />
-                      <Route path="/groups" element={<Groups />} />
+                      <Route path="/groups/*" element={<Groups />} />
                       <Route path="/photos" element={<Photos />} />
                       <Route path="/settings" element={<Settings />} />
                       <Route path="/" element={<Navigate to="/home" />} />
