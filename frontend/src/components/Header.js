@@ -9,12 +9,12 @@ function Header() {
             {/*  Splitting header into 3 components */}
 
             <div className='header__center'>
-                <div className="header__input">
+                {/* <div className="header__input">
                     <div>
                         <SearchIcon style={{ fontSize: '24px', color: '#ffffff' }} />
                     </div>
                     <input placeholder="Search" type="text" />
-                </div>
+                </div> */}
             </div>
         </div>
     );

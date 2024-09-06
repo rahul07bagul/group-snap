@@ -40,10 +40,6 @@ form {
     flex-direction: column;
 }
 
-form.sign-up-form {
-    visibility: hidden;
-}
-
 .title {
     font-size: 35px;
     color: #999;

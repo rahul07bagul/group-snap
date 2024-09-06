@@ -6,6 +6,7 @@
 	background-color: #1f1f1f;
 	z-index: 100;
 	top: 0;
+	height: 60px;
 	box-shadow: -5px 4px 10px 0 rgba(0, 0, 0, 0.4), 0 -2px 10px 0 rgba(0, 0, 0, 0.5);
 }
 

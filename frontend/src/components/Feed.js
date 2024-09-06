@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Feed.css';
 import Post from './Post';
-import rahulImage from '../images/Rahul Main.JPG';
 import rahulImage2 from '../images/rahulImage2.jpg'
 import WritePost from './MessageSender';
 import groupImg from '../images/groupImg.jpg';

@@ -7,17 +7,20 @@ import Groups from './components/Groups';
 import Photos from './components/Photos';
 import Settings from './components/Settings';
 import Login from './components/Login';
+import SignUp from './components/SignUp';
 import './App.css';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-
   return (
     <Router>
       <div className="App">
         <Routes>
           {/* Route for Login */}
           <Route path="/login" element={<Login onSignIn={() => setIsAuthenticated(true)} />} />
+
+          {/* Route for SignUp */}
+          <Route path="/signup" element={<SignUp />} />
 
           {/* Routes for Authenticated Users */}
           {isAuthenticated && (
