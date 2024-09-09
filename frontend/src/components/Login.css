@@ -105,6 +105,14 @@ a {
     color: #f0f0f0;
 }
 
+.error-message {
+    padding-top: 10px;
+    display: grid;
+	place-items: center;
+    color: red;
+    font-size: 16px;
+}
+
 .container.sign-up-mode form.sign-up-form {
     visibility: visible;
 }

@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate  } from 'react-router-dom';
+import { loginUser } from '../services/authService';
 
 function Login({ onSignIn }) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+
   const navigate = useNavigate ();
 
-  const handleSignIn = (event) => {
-    event.preventDefault(); // Prevent the default form submission
-
-    // Perform your login logic here
-    // For this example, we'll just simulate a login
-    onSignIn();
-    navigate('/home'); // Redirect to the main app after login
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await loginUser(username, password);
+      onSignIn();
+      navigate('/home');
+    } catch (err) {
+      setError('Invalid username or password');
+    }
   };
 
   return (
@@ -22,16 +29,17 @@ function Login({ onSignIn }) {
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <a href="/" className="forgot-password">Forgot password?</a>
             <input type="submit" value="Login" className="btn"/>
             <p>Don't have an account? <a href="/signup" className="account-text" id="sign-up-link">Sign up</a></p>
           </form>
+          <p className='error-message'>{error}</p>
         </div>
       </div>
     </div>
