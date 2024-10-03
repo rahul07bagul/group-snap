@@ -7,3 +7,7 @@
 	align-items: center;
 	overflow-y: auto;
 }
+
+.noPost{
+	padding: 20px;
+}

@@ -55,7 +55,23 @@
     }
 }
 
+.textField .MuiInputBase-input{
+    color: rgb(220, 218, 218);
+}
+
 .dialogActions {
     justify-content: center;
     color: #c1c0c0 !important;
+}
+
+.inviteCode{
+    padding-top: 20px;
+    color: #c1c0c0
+}
+
+.inviteCode > h3{
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #c1c0c0;
 }

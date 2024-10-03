@@ -7,6 +7,8 @@ const pool = require('./config/db'); // Import the pool directly
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var groupRouter = require('./routes/groups');
+var postRouter = require('./routes/posts');
 const authRouter = require('./routes/auth');
 
 var app = express();
@@ -35,6 +37,8 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
+app.use('/groups',groupRouter);
+app.use('/posts',postRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

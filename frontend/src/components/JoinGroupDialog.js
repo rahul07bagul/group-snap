@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, TextField } from '@material-ui/core';
 import './Dialog.css';
+import { joinGroup } from '../services/groupService';
+import { useStateValue } from '../context/StateProvider';
 
 function JoinGroupDialog({ open, onClose }) {
     const [groupCode, setGroupCode] = useState('');
+    const [{ user }] = useStateValue();
 
-    const handleJoinGroup = () => {
-        console.log('Joining Group with Code:', groupCode);
-        onClose(); // Close the dialog
+    const handleJoinGroup = async () => {
+        try{
+            const response = await joinGroup(groupCode, user.user_id);
+            console.log('Joined Group', response.message);
+            onClose(); // Close the dialog
+        }catch (error) {
+            console.error('Error joining group:', error);
+        }
     };
 
     return (

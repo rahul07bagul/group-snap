@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/authService';
+import { useStateValue } from '../context/StateProvider';
+import { actionTypes } from '../context/reducer';
 
 function Login({ onSignIn }) {
+  const [{ user }, dispatch] = useStateValue();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -11,12 +14,20 @@ function Login({ onSignIn }) {
   const navigate = useNavigate ();
 
   const handleSignIn = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
     try {
       const response = await loginUser(username, password);
-      onSignIn();
+      
+      dispatch({
+        type: actionTypes.SET_USER,
+        user: response,
+      });
+
+      if (onSignIn) onSignIn();
+
       navigate('/home');
     } catch (err) {
+      // Handle login error
       setError('Invalid username or password');
     }
   };

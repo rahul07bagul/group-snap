@@ -11,13 +11,28 @@ import SignUp from './components/SignUp';
 import './App.css';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(
+    () => localStorage.getItem('isAuthenticated') === 'true'
+  );
+
+  // Function to handle user logout
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('isAuthenticated'); // Clear session
+  };
+
+  // Function to handle user login
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem('isAuthenticated', 'true'); // Save session
+  };
+
   return (
     <Router>
       <div className="App">
         <Routes>
           {/* Route for Login */}
-          <Route path="/login" element={<Login onSignIn={() => setIsAuthenticated(true)} />} />
+          <Route path="/login" element={<Login onSignIn={handleLogin} />} />
 
           {/* Route for SignUp */}
           <Route path="/signup" element={<SignUp />} />
@@ -30,9 +45,9 @@ function App() {
                 <>
                   <Header />
                   <div className="app__body">
-                    <Sidebar />
+                    <Sidebar onLogout={handleLogout}/>
                     <Routes>
-                      <Route path="/home" element={<Feed />} />
+                      <Route path="/home" element={<Feed group={null} page='home'/>} />
                       <Route path="/groups/*" element={<Groups />} />
                       <Route path="/photos" element={<Photos />} />
                       <Route path="/settings" element={<Settings />} />

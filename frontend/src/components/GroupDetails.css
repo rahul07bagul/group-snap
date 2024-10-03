@@ -80,5 +80,29 @@
     font-size: 18px;
 }
 
+.inviteCode{
+    padding-top: 20px;
+    color: #c1c0c0
+}
 
+.inviteCode > h3{
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #c1c0c0;
+}
+
+.delete-group{
+    padding-top: 20px;
+}
+
+.delete-group Button{
+    color: #fa5e55;
+    background-color: #3d3c3c;
+}
+
+.delete-group Button:hover{
+    color: white;
+    background-color: #fa5e55;
+}
 

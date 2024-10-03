@@ -6,12 +6,16 @@ import GroupRow from './GroupRow';
 import CreateGroupDialog from './CreateGroupDialog';
 import JoinGroupDialog from './JoinGroupDialog';
 import GroupDetails from './GroupDetails';
+import { useGroups } from '../hooks/useGroups';
 
 function Groups() {
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
   const [openJoinDialog, setOpenJoinDialog] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Use custom hook to fetch groups
+  const { userGroups, loading, error, fetchUserGroups } = useGroups();
 
   const handleOpenCreateDialog = () => {
     setOpenCreateDialog(true);
@@ -29,9 +33,19 @@ function Groups() {
     setOpenJoinDialog(false);
   };
 
-  const handleGroupClick = (groupName) => {
-    navigate(`/groups/${groupName}`);
+  const handleGroupClick = (group) => {
+    navigate(`/groups/${group.group_name}`, { state: { group } });  // Pass the group object in the state
   };
+
+  const handleGroupCreated = async () => {
+    console.log('handleGroupCreated');
+    await fetchUserGroups();  // Refresh the group list after creating a group
+  };
+
+  const handleJoinGroup = async () => {
+    console.log('handleJoinGroup');
+    await fetchUserGroups();  // Refresh the group list after joining a group
+  }
 
   // Check if the current path is exactly '/groups'
   const isGroupsPath = location.pathname === '/groups';
@@ -48,15 +62,24 @@ function Groups() {
           </div>
 
           <div className='groups'>
-            <GroupRow groupName="Purdue Friends" onClick={() => handleGroupClick("Purdue Friends")} />
-            <GroupRow groupName="Roommates" onClick={() => handleGroupClick("Roommates")} />
+            {userGroups.length > 0 ? (
+              userGroups.map((group) => (
+                <GroupRow
+                  key={group.group_id}
+                  groupName={group.group_name}
+                  onClick={() => handleGroupClick(group)}
+                />
+              ))
+            ) : (
+              <div>No groups available</div>
+            )}
           </div>
 
           {/* Create Group Dialog */}
-          <CreateGroupDialog open={openCreateDialog} onClose={handleCloseCreateDialog} />
+          <CreateGroupDialog open={openCreateDialog} onGroupCreated={handleGroupCreated} onClose={handleCloseCreateDialog} />
 
           {/* Join Group Dialog */}
-          <JoinGroupDialog open={openJoinDialog} onClose={handleCloseJoinDialog} />
+          <JoinGroupDialog open={openJoinDialog} onGroupJoined={handleJoinGroup} onClose={handleCloseJoinDialog} />
         </>
       )}
 

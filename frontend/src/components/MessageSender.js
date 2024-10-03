@@ -4,54 +4,92 @@ import { Button } from '@material-ui/core';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
 import { Avatar } from '@material-ui/core';
+import { useStateValue } from '../context/StateProvider';
+import { createPost } from '../services/postService';
 
-function MessageSender() {
-	// Hardcoded user information
-	const user = {
-		displayName: 'John Doe',
-		photoURL: 'https://example.com/user-avatar.jpg'
+function MessageSender({groupId, onPostCreated }) {
+	const [{ user, profilePicture, error }, dispatch] = useStateValue();
+
+	const [caption, setCaption] = useState('');
+	const [selectedFile, setSelectedFile] = useState(null);
+	const [previewUrl, setPreviewUrl] = useState(null);
+	// console.log(groupId);
+
+	const handleFileChange = (e) => {
+		const file = e.target.files[0];
+		setSelectedFile(file);
+
+		// Create a preview URL for the selected image
+		if (file) {
+			setPreviewUrl(URL.createObjectURL(file));
+		}
 	};
 
-	const [input, setInput] = useState('');
-	// const [imageUrl, setImageUrl] = useState('');
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault(); // Preventing page refresh
+		const formData = new FormData();
+    	formData.append('message', caption);
+    	formData.append('file', selectedFile);
+		formData.append('groupId', groupId);
+		formData.append('userId', user.user.id);
 
-	// 	// Simulate DB operations
-	// 	console.log('Message:', input);
-	// 	console.log('Image URL:', imageUrl);
-	// 	console.log('User:', user.displayName, user.photoURL);
+		console.log('formData ' + JSON.stringify(formData));
 
-	// 	// Reset input fields after submission
-	// 	setInput('');
-	// 	setImageUrl('');
-	// };
-
+		try {
+			// POST the data to your backend API
+			const response = await createPost(formData);
+			console.log('Response from server:', response);
+	  
+			// Clear the form after successful submission
+			setCaption('');
+			setSelectedFile(null);
+			setPreviewUrl(null);
+			onPostCreated();
+		  } catch (error) {
+			console.error('Error uploading the file', error);
+		  }
+		};
 	return (
 		<div className="messageSender">
 			<div className="messageSender__top">
-				<Avatar src={user.photoURL} />
+				<Avatar src={`data:image/jpeg;base64,${profilePicture}`} />
 				<form>
 					<input
-						value={input}
-						onChange={(e) => setInput(e.target.value)}
+						value={caption}
+						onChange={(e) => setCaption(e.target.value)}
 						className="messageSender__input"
 						placeholder={`Write something...`}
 					/>
 				</form>
-				<Button type='submit' className='messageSender_button' variant="text">Post</Button>
+				<Button type="submit" onClick={handleSubmit} className='messageSender_button' variant="text">Post</Button>
 			</div>
+
+			{/* Image Preview */}
+			{previewUrl && (
+				<div className="messageSender__imagePreview">
+					<img src={previewUrl} alt="Preview" style={{ maxWidth: '100%', marginTop: '10px' }} />
+				</div>
+			)}
 
 			<div className="messageSender__bottom">
 				<div className="messageSender__option">
 					<VideocamIcon style={{ color: 'red' }} />
-					<h3>Post Video</h3>
+					<h3>Video</h3>
 				</div>
 
 				<div className="messageSender__option">
-					<PhotoLibraryIcon style={{ color: '#27ae60' }} />
-					<h3>Post Photo</h3>
+					<label htmlFor="fileInput" className="messageSender__fileUpload">
+						<PhotoLibraryIcon style={{ color: '#27ae60' }} />
+						<h3>Photo</h3>
+					</label>
+					<input
+						type="file"
+						id="fileInput"
+						style={{ display: 'none' }}
+						onChange={handleFileChange}
+						accept="image/*"
+					/>
 				</div>
 			</div>
 		</div>

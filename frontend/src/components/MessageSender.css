@@ -14,7 +14,6 @@
 
 .messageSender__top {
 	display: flex;
-	border-bottom: 1px solid #707070;
 	padding-bottom: 15px;
 	padding: 15px;
 }
@@ -62,6 +61,7 @@
 
 .messageSender__bottom {
 	display: flex;
+	border-top: 1px solid #707070;
 	justify-content: space-evenly;
 }
 
@@ -83,6 +83,25 @@
 	background-color: #cbcbcb;
 	border-radius: 20px;
 }
+
+.messageSender__fileUpload {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+  }
+
+.messageSender__fileUpload h3 {
+	margin-left: 10px; 
+}
+
+.messageSender__imagePreview{
+	margin-bottom: 20px;
+}
+
+.messageSender__imagePreview img {
+	max-width: 100%;
+	border-radius: 10px;
+  }
 
 * {
 	font-family: 'Poppins', sans-serif;
