@@ -43,3 +43,13 @@ export const joinGroup = async (inviteCode, userId) => {
     throw error; 
   }
 };
+
+export const deleteGroup = async (id) => {
+  try {
+    const response = await api.delete(`/groups/delete/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting group:', error);
+    throw error; 
+  }
+};

@@ -134,10 +134,10 @@ router.delete('/delete/:id', async (req, res) => {
       [groupId]
     );
 
-    // Check if the group was deleted
-    if (groupResult.rowCount === 0) {
-      return res.status(404).json({ message: 'Group not found' });
-    }
+    // // Check if the group was deleted
+    // if (groupResult.rowCount === 0) {
+    //   return res.status(404).json({ message: 'Group not found' });
+    // }
 
     res.status(200).json({ message: 'Group deleted successfully' });
   } catch (err) {

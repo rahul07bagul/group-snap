@@ -15,7 +15,8 @@ function Groups() {
   const location = useLocation();
 
   // Use custom hook to fetch groups
-  const { userGroups, loading, error, fetchUserGroups } = useGroups();
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const { userGroups } = useGroups(refreshTrigger);
 
   const handleOpenCreateDialog = () => {
     setOpenCreateDialog(true);
@@ -38,14 +39,18 @@ function Groups() {
   };
 
   const handleGroupCreated = async () => {
-    console.log('handleGroupCreated');
-    await fetchUserGroups();  // Refresh the group list after creating a group
+    //await fetchUserGroups();  // Refresh the group list after creating a group
+    setRefreshTrigger((prev) => prev + 1);
   };
 
   const handleJoinGroup = async () => {
-    console.log('handleJoinGroup');
-    await fetchUserGroups();  // Refresh the group list after joining a group
+    //await fetchUserGroups();  // Refresh the group list after joining a group
+    setRefreshTrigger((prev) => prev + 1);
   }
+
+  const handleGroupDeleted = () => {
+    setRefreshTrigger((prev) => prev + 1);
+  };
 
   // Check if the current path is exactly '/groups'
   const isGroupsPath = location.pathname === '/groups';
@@ -85,7 +90,7 @@ function Groups() {
 
       {/* Route for individual group pages */}
       <Routes>
-        <Route path="/:groupName" element={<GroupDetails />} />
+      <Route path="/:groupName" element={<GroupDetails onGroupDeleted={handleGroupDeleted} />} />
       </Routes>
     </div>
   );

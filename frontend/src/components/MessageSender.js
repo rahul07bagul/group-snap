@@ -8,7 +8,7 @@ import { useStateValue } from '../context/StateProvider';
 import { createPost } from '../services/postService';
 
 function MessageSender({groupId, onPostCreated }) {
-	const [{ user, profilePicture, error }, dispatch] = useStateValue();
+	const [{ user, profilePicture }] = useStateValue();
 
 	const [caption, setCaption] = useState('');
 	const [selectedFile, setSelectedFile] = useState(null);

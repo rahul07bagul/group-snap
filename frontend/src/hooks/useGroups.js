@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getUserGroups } from '../services/groupService';
 import { useStateValue } from '../context/StateProvider';
 
-export const useGroups = () => {
+export const useGroups = (refreshTrigger) => {
   const [{ user }] = useStateValue();
   const [userGroups, setUserGroups] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +26,7 @@ export const useGroups = () => {
   // Fetch user groups when the component mounts
   useEffect(() => {
     fetchUserGroups();
-  }, []);  // Empty dependency array means this will run once on component mount
+  }, [refreshTrigger]);  // Empty dependency array means this will run once on component mount
 
   return { userGroups, loading, error, fetchUserGroups };  // Return fetchUserGroups to use it outside the hook
 };

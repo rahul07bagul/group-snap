@@ -8,6 +8,7 @@
 .dialogTitle {
     font-size: 1.5rem;
     font-weight: bold;
+    text-align: center;
     color: #c1c0c0;
 }
 
@@ -75,3 +76,38 @@
     font-weight: 500;
     color: #c1c0c0;
 }
+
+.imagePickerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0;
+    position: relative;
+  }
+  
+  .imagePreviewContainer {
+    position: relative;
+    width: 120px; /* Slightly larger to accommodate the icon */
+    height: 120px;
+  }
+  
+  .imagePreview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+  }
+  
+  .imageUploadButton {
+    position: absolute !important;
+    bottom: 0;
+    right: 15px; /* Partially overlap the circle */
+    background-color: white !important;
+    border: 2px solid #ddd !important;
+    border-radius: 50% !important;
+    padding: 5px !important;
+  }
+  
+  
+  
