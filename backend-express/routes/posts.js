@@ -99,4 +99,24 @@ router.get('/fetch/user/:user_id', async (req, res) => {
     }
 });
 
+// Delete Post
+router.delete('/delete/:id', async (req, res) => {
+    const post_id = req.params.id;
+  
+    try {
+      const db = req.app.get('db');
+  
+      // Delete the group with the given group ID
+      const groupResult = await db.query(
+        'DELETE FROM posts WHERE post_id = $1 RETURNING *',
+        [post_id]
+      );
+  
+      res.status(200).json({ message: 'Post deleted successfully' });
+    } catch (err) {
+      console.error('Error deleting group:', err);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+
 module.exports = router;

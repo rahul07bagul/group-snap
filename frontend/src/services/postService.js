@@ -36,3 +36,13 @@ export const fetchAllPosts = async (userId) => {
     throw error;
   }
 };
+
+export const deletePost = async (post_id) => {
+  try {
+    const response = await api.delete(`/posts/delete/${post_id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting posts:', error);
+    throw error; 
+  }
+};

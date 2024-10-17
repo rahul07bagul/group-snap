@@ -83,6 +83,10 @@ function Feed({ group, page }) {
         }
     };
 
+    const handleDeleteRefresh = (postId) => {
+        setPosts(posts.filter((post) => post.post_id !== postId));
+    };
+
     return (
         <div className="feed">
             {/* WritePost component with a callback to refresh posts after posting */}
@@ -97,11 +101,10 @@ function Feed({ group, page }) {
                 posts.map((post) => (
                     <Post
                         key={post.post_id}
+                        post={post}
                         profilePic={post.profilePic || 'https://example.com/default-profile.jpg'}
-                        message={post.caption}
-                        timestamp={post.created_at}
-                        username={post.anonymous_name || 'Anonymous'}
                         image={post.image ? `data:image/jpeg;base64,${post.image}` : null}
+                        handleDeleteRefresh={handleDeleteRefresh}
                     />
                 ))
             ) : (

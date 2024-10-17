@@ -17,6 +17,8 @@ function Login({ onSignIn }) {
     e.preventDefault(); // Prevent default form submission
     try {
       const response = await loginUser(username, password);
+      localStorage.setItem('user', JSON.stringify(response));
+      localStorage.setItem('isAuthenticated', 'true');
       
       dispatch({
         type: actionTypes.SET_USER,

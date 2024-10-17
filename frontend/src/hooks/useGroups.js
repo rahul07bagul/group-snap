@@ -4,11 +4,16 @@ import { useStateValue } from '../context/StateProvider';
 
 export const useGroups = (refreshTrigger) => {
   const [{ user }] = useStateValue();
-  const [userGroups, setUserGroups] = useState([]);
+  const [userGroups, setUserGroups] = useState(() => {
+    // Try to load user groups from localStorage when component mounts
+    const storedGroups = localStorage.getItem('userGroups');
+    return storedGroups ? JSON.parse(storedGroups) : [];
+  });
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const userId = user.user.id;
+  const userId = user?.user.id;
 
   // Function to fetch user groups
   const fetchUserGroups = async () => {
@@ -16,6 +21,7 @@ export const useGroups = (refreshTrigger) => {
     try {
       const data = await getUserGroups(userId);
       setUserGroups(data);
+      localStorage.setItem('userGroups', JSON.stringify(data));
     } catch (err) {
       setError(err.message);
     } finally {
@@ -25,8 +31,17 @@ export const useGroups = (refreshTrigger) => {
 
   // Fetch user groups when the component mounts
   useEffect(() => {
-    fetchUserGroups();
-  }, [refreshTrigger]);  // Empty dependency array means this will run once on component mount
+    if (userId) {
+      // Check if we already have user groups in localStorage
+      const storedGroups = localStorage.getItem('userGroups');
+      if (storedGroups) {
+        setUserGroups(JSON.parse(storedGroups));
+        setLoading(false);
+      } else {
+        fetchUserGroups();
+      }
+    }
+  }, [refreshTrigger, userId]);
 
   return { userGroups, loading, error, fetchUserGroups };  // Return fetchUserGroups to use it outside the hook
 };

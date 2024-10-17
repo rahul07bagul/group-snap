@@ -30,6 +30,11 @@
 	position: relative;
 	align-items: center;
 	padding: 15px;
+	justify-content: space-between;
+}
+
+.post__topInfo{
+	flex-grow: 1;
 }
 
 .post__avatar {
@@ -76,4 +81,32 @@
 
 .post__option > p {
 	margin-left: 10px;
+}
+
+.customMenu {
+    background-color: #333 !important; 
+    color: #c8c7c7 !important;            
+    border-radius: 10px !important;     
+    padding: 10px !important;           
+}
+
+.customMenuItem {
+    padding: 10px 20px !important;
+    color: #c8c7c7 !important;
+}
+
+.customMenuItem:hover {
+    background-color: #555 !important; 
+}
+
+.post_options{
+	color: white;
+	border: 1px solid transparent;
+	border-radius: 10%;
+	transition: all 0.3s ease;
+}
+
+.post_options:hover{
+	border-color: #555;
+	cursor: pointer;
 }
